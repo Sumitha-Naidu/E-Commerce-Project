@@ -28,3 +28,7 @@
    iii. setup useState hook
    iv. setup useEffect hook
    v. setup useReducer hook
+7. Managing State by Reducer hook
+   i. define reducer
+   ii. update fetch data
+   iii. get state from useReducer
