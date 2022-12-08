@@ -45,3 +45,7 @@ main {
 .img-large {
   width: 100%;
 }
+
+.img-thumbnail {
+  width: 80px;
+}
