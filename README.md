@@ -101,3 +101,7 @@
 24. Implement Select Payment Method Screen
     i. Create input form
     ii. handle submit
+25. Create Place Order Screen
+    i. Show cart items, Payment and Address
+    ii. Handle place order action
+    iii. Create order api
