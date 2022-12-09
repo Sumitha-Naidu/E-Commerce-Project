@@ -90,3 +90,11 @@
     i. Handle Submit Action
     ii. Save token in store and localstorage
     iii. Show Username in header
+22. Create Shipping Screen
+    i. Create form inputs
+    ii. Handle save shipping address
+    iii. Add checkout wizard bar
+23. Create Sign Up Screen
+    i. Create input forms
+    ii. Handle submit
+    iii. create backend api

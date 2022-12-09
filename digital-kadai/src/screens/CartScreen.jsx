@@ -28,14 +28,14 @@ export default function CartScreen() {
     });
   };
   const removeItemHandler = async (item, quantity) => {
-    const { data } = await axios.get(`/api/products/${item._id}`);
-    if (data.countInStock < quantity) {
-      window.alert('Sorry. Product is Out of Stock');
-      return;
-    }
+    // const { data } = await axios.get(`/api/products/${item._id}`);
+    // if (data.countInStock < quantity) {
+    //   window.alert('Sorry. Product is Out of Stock');
+    //   return;
+    // }
     ctxDispatch({
       type: 'CART_REMOVE_ITEM',
-      payload: { ...item, quantity },
+      payload: { ...item },
     });
   };
 
@@ -104,29 +104,31 @@ export default function CartScreen() {
           )}
         </Col>
         <Col md={4}>
-          <Card.Body>
-            <ListGroup variant="flush">
-              <ListGroup.Item>
-                <h3>
-                  Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}{' '}
-                  items): $
-                  {cartItems.reduce((a, c) => a + c.price * c.quantity, 0)}
-                </h3>
-              </ListGroup.Item>
-              <ListGroup.Item>
-                <div className="d-grid">
-                  <Button
-                    type="button"
-                    variant="primary"
-                    onClick={() => checkoutHandler()}
-                    disabled={cartItems.length === 0}
-                  >
-                    Proceed to Checkout
-                  </Button>{' '}
-                </div>
-              </ListGroup.Item>
-            </ListGroup>
-          </Card.Body>
+          <Card>
+            <Card.Body>
+              <ListGroup variant="flush">
+                <ListGroup.Item>
+                  <h3>
+                    Subtotal ({cartItems.reduce((a, c) => a + c.quantity, 0)}{' '}
+                    items): $
+                    {cartItems.reduce((a, c) => a + c.price * c.quantity, 0)}
+                  </h3>
+                </ListGroup.Item>
+                <ListGroup.Item>
+                  <div className="d-grid">
+                    <Button
+                      type="button"
+                      variant="primary"
+                      onClick={checkoutHandler}
+                      disabled={cartItems.length === 0}
+                    >
+                      Proceed to Checkout
+                    </Button>
+                  </div>
+                </ListGroup.Item>
+              </ListGroup>
+            </Card.Body>
+          </Card>
         </Col>
       </Row>
     </div>
