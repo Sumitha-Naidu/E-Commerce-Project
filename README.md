@@ -86,3 +86,7 @@
     i. create signin api
     ii. npm i jsonwebtoken
     iii. define generateToken
+21. Complete SignIn Screen
+    i. Handle Submit Action
+    ii. Save token in store and localstorage
+    iii. Show Username in header

@@ -1,20 +1,53 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, Link, useNavigate } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import Axios from 'axios';
+import { Store } from '../Store/store';
+import { toast } from 'react-toastify';
+import { getError } from '../utils';
+
 export default function SignInScreen() {
   const { search } = useLocation();
+  const navigate = useNavigate();
   const redirectUrl = new URLSearchParams(search).get('redirect');
   const redirect = redirectUrl ? redirectUrl : '/';
+
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  const { state, dispatch: ctxDispatch } = useContext(Store);
+  const { userInfo } = state;
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    try {
+      const { data } = await Axios.post('/api/users/signin', {
+        email,
+        password,
+      });
+      ctxDispatch({ type: 'USER_SIGNIN', payload: data });
+      localStorage.setItem('userInfo', JSON.stringify(data));
+      console.log(data);
+      navigate(redirect || '/');
+    } catch (err) {
+      toast.error(getError(err));
+    }
+  };
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate('/');
+    }
+  });
   return (
     <Container className="small-contatiner">
       <Helmet>
         <title>Sign In</title>
       </Helmet>
       <h1 className="my-3">Sign In</h1>
-      <Form>
+      <Form onSubmit={submitHandler}>
         <Form.Group
           className="mb-3"
           controlId="email"
@@ -23,6 +56,7 @@ export default function SignInScreen() {
           <Form.Control
             type="email"
             required
+            onChange={(e) => setEmail(e.target.value)}
           />
         </Form.Group>
         <Form.Group
@@ -33,6 +67,7 @@ export default function SignInScreen() {
           <Form.Control
             type="password"
             required
+            onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
         <div className="mb-3">
