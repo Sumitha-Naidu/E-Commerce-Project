@@ -49,3 +49,7 @@ main {
 .img-thumbnail {
   width: 80px;
 }
+
+.small-contatiner {
+  max-width: 600px;
+}

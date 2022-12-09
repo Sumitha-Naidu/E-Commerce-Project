@@ -63,3 +63,12 @@
     i. Click handler for in//dec items
     ii. Click handler to remove item
     iii. Click handler for Checkout button
+16. Create SignIn Screen
+    i. Create SignIn form
+    ii. Add Email and password
+    iii. Add SignIn button
+17. Connect to MongoDB database
+    i. create atlas monogodb database
+    ii. install local mongodb database
+    iii. npm install mongoose
+    iv. connect to mongodb database
