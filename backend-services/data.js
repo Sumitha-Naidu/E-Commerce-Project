@@ -1,7 +1,21 @@
 const data = {
+  users: [
+    {
+      name: 'Sumitha',
+      email: 'admin@digitalkadai.com',
+      password: bcrypt.hashSync('123456'),
+      isAdmin: true,
+    },
+    {
+      name: 'chellam',
+      email: 'chellam@digitalkadai.com',
+      password: bcrypt.hashSync('123456'),
+      isAdmin: false,
+    },
+  ],
   products: [
     {
-      _id: '1',
+      // _id: '1',
       name: 'Nike Silm Shirt',
       slug: 'nike-slim-shirt',
       category: 'Shirts',
@@ -14,7 +28,7 @@ const data = {
       description: 'High quality shirt',
     },
     {
-      _id: '2',
+      // _id: '2',
       name: 'Adidas Fit Shirt',
       slug: 'adidas-fit-shirt',
       category: 'Shirts',
@@ -27,7 +41,7 @@ const data = {
       description: 'High quality shirt',
     },
     {
-      _id: '3',
+      // _id: '3',
       name: 'Nike Silm Pant',
       slug: 'nike-slim-pant',
       category: 'Pants',
@@ -40,7 +54,7 @@ const data = {
       description: 'High quality shirt',
     },
     {
-      _id: '4',
+      // _id: '4',
       name: 'Adidas Fit Pant',
       slug: 'adidas-fit-pant',
       category: 'Pants',
