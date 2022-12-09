@@ -2,6 +2,7 @@ import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 export default function CheckoutSteps(props) {
+  console.log('checkout', JSON.stringify(props));
   return (
     <Row className="checkout-steps">
       <Col className={props.step1 ? 'active' : ''}>Sign-In</Col>
