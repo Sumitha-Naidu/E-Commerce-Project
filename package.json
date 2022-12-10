@@ -1,0 +1,21 @@
+{
+  "name": "digital-kadai",
+  "version": "1.0.0",
+  "description": "Mudhal Project",
+  "main": "index.js",
+  "scripts": {
+    "build": "cd backend-services && npm install && cd ../digital-kadai && npm install && npm run build",
+    "start": "node backend-services/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sumitha-Naidu/E-Commerce-Project.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sumitha-Naidu/E-Commerce-Project/issues"
+  },
+  "homepage": "https://github.com/Sumitha-Naidu/E-Commerce-Project#readme"
+}
