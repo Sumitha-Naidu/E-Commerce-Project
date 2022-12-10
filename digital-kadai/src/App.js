@@ -18,6 +18,7 @@ import SignUpScreen from './screens/SignUpScreen';
 import PaymentMethodScreen from './screens/PaymentMethodScreen';
 import PlaceOrderScreen from './screens/PlaceOrderScreen';
 import OrderScreen from './screens/OrderScreen';
+import OrderHistoryScreen from './screens/OrderHistoryScreen';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -40,55 +41,59 @@ function App() {
           <Navbar
             bg="dark"
             variant="dark"
+            expand="lg"
           >
             <Container>
               <LinkContainer to="/">
                 <Navbar.Brand>Digital Kadai</Navbar.Brand>
               </LinkContainer>
-              <Nav className="me-auto">
-                <Link
-                  to="/cart"
-                  className="nav-link"
-                >
-                  Cart
-                  {cart.cartItems.length > 0 && (
-                    <Badge
-                      pill
-                      bg="danger"
-                    >
-                      {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
-                    </Badge>
-                  )}
-                </Link>
-                {userInfo ? (
-                  <NavDropDown
-                    title={userInfo.name}
-                    id="basic-nav-dropdown"
-                  >
-                    <LinkContainer to="/profile">
-                      <NavDropDown.Item>User Profile</NavDropDown.Item>
-                    </LinkContainer>
-                    <LinkContainer to="/orderhistory">
-                      <NavDropDown.Item>Order History</NavDropDown.Item>
-                    </LinkContainer>
-                    <NavDropDown.Divider />
-                    <Link
-                      className="dropdown-item"
-                      to="#signout"
-                      onClick={signoutHandler}
-                    >
-                      Sign Out
-                    </Link>
-                  </NavDropDown>
-                ) : (
+              <Navbar.Toggle aria-controls="basic-navbar-nav" />
+              <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="me-auto w-100 justify-content-end">
                   <Link
+                    to="/cart"
                     className="nav-link"
-                    to="/signin"
                   >
-                    Sign In
+                    Cart
+                    {cart.cartItems.length > 0 && (
+                      <Badge
+                        pill
+                        bg="danger"
+                      >
+                        {cart.cartItems.reduce((a, c) => a + c.quantity, 0)}
+                      </Badge>
+                    )}
                   </Link>
-                )}
-              </Nav>
+                  {userInfo ? (
+                    <NavDropDown
+                      title={userInfo.name}
+                      id="basic-nav-dropdown"
+                    >
+                      <LinkContainer to="/profile">
+                        <NavDropDown.Item>User Profile</NavDropDown.Item>
+                      </LinkContainer>
+                      <LinkContainer to="/orderhistory">
+                        <NavDropDown.Item>Order History</NavDropDown.Item>
+                      </LinkContainer>
+                      <NavDropDown.Divider />
+                      <Link
+                        className="dropdown-item"
+                        to="#signout"
+                        onClick={signoutHandler}
+                      >
+                        Sign Out
+                      </Link>
+                    </NavDropDown>
+                  ) : (
+                    <Link
+                      className="nav-link"
+                      to="/signin"
+                    >
+                      Sign In
+                    </Link>
+                  )}
+                </Nav>
+              </Navbar.Collapse>
             </Container>
           </Navbar>
         </header>
@@ -130,6 +135,10 @@ function App() {
               <Route
                 path="/order/:id"
                 element={<OrderScreen />}
+              />
+              <Route
+                path="/orderhistory"
+                element={<OrderHistoryScreen />}
               />
             </Routes>
           </Container>
