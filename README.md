@@ -146,3 +146,7 @@
     i. Show filters
     ii. Create api for searching products
     iii. Display results
+34. Create Admin Menu
+    i. define protected route component
+    ii. define admin route component
+    iii. add menu for admin in header

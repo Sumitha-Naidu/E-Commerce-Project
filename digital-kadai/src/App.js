@@ -26,6 +26,9 @@ import { getError } from './utils';
 import axios from 'axios';
 import SearchBox from './components/SearchBox';
 import SearchScreen from './screens/SearchScreen';
+import ProtectedRoute from './components/ProtectedRoute';
+import DashboardScreen from './screens/DashboardScreen';
+import AdminRoute from './components/AdminRoute';
 
 function App() {
   const { state, dispatch: ctxDispatch } = useContext(Store);
@@ -128,6 +131,25 @@ function App() {
                       Sign In
                     </Link>
                   )}
+                  {userInfo && userInfo.isAdmin && (
+                    <NavDropDown
+                      title="Admin"
+                      id="admin-nav-dropdown"
+                    >
+                      <LinkContainer to="/admin/dashboard">
+                        <NavDropDown.Item>Dashboard</NavDropDown.Item>
+                      </LinkContainer>
+                      <LinkContainer to="/admin/productlist">
+                        <NavDropDown.Item>Products</NavDropDown.Item>
+                      </LinkContainer>
+                      <LinkContainer to="/admin/orderlist">
+                        <NavDropDown.Item>Orders</NavDropDown.Item>
+                      </LinkContainer>
+                      <LinkContainer to="/admin/userlist">
+                        <NavDropDown.Item>Users</NavDropDown.Item>
+                      </LinkContainer>
+                    </NavDropDown>
+                  )}
                 </Nav>
               </Navbar.Collapse>
             </Container>
@@ -160,8 +182,16 @@ function App() {
           <Container className="mt-3">
             <Routes>
               <Route
-                path="/"
-                element={<HomeScreen />}
+                path="/product/:slug"
+                element={<ProductScreen />}
+              />
+              <Route
+                path="/cart"
+                element={<CartScreen />}
+              />
+              <Route
+                path="/search"
+                element={<SearchScreen />}
               />
               <Route
                 path="/signin"
@@ -172,12 +202,32 @@ function App() {
                 element={<SignUpScreen />}
               />
               <Route
-                path="/cart"
-                element={<CartScreen />}
+                path="/profile"
+                element={
+                  <ProtectedRoute>
+                    <ProfileScreen />
+                  </ProtectedRoute>
+                }
               />
               <Route
-                path="/product/:slug"
-                element={<ProductScreen />}
+                path="/placeorder"
+                element={<PlaceOrderScreen />}
+              />
+              <Route
+                path="/order/:id"
+                element={
+                  <ProtectedRoute>
+                    <OrderScreen />
+                  </ProtectedRoute>
+                }
+              />
+              <Route
+                path="/orderhistory"
+                element={
+                  <ProtectedRoute>
+                    <OrderHistoryScreen />
+                  </ProtectedRoute>
+                }
               />
               <Route
                 path="/shipping"
@@ -187,25 +237,18 @@ function App() {
                 path="/payment"
                 element={<PaymentMethodScreen />}
               />
+              {/* Admin Routes */}
               <Route
-                path="/placeorder"
-                element={<PlaceOrderScreen />}
+                path="/admin/dashboard"
+                element={
+                  <AdminRoute>
+                    <DashboardScreen />
+                  </AdminRoute>
+                }
               />
               <Route
-                path="/order/:id"
-                element={<OrderScreen />}
-              />
-              <Route
-                path="/orderhistory"
-                element={<OrderHistoryScreen />}
-              />
-              <Route
-                path="/profile"
-                element={<ProfileScreen />}
-              />
-              <Route
-                path="/search"
-                element={<SearchScreen />}
+                path="/"
+                element={<HomeScreen />}
               />
             </Routes>
           </Container>
