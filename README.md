@@ -150,3 +150,7 @@
     i. define protected route component
     ii. define admin route component
     iii. add menu for admin in header
+35. Create Dashboard Screen
+    i. create dashboard ui
+    ii. implement backend api
+    iii. connect ui to backend
