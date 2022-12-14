@@ -154,3 +154,7 @@
     i. create dashboard ui
     ii. implement backend api
     iii. connect ui to backend
+36. Manage products
+    i. Create products list UI
+    ii. Implement Backend API
+    iii. fetch data
