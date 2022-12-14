@@ -162,3 +162,7 @@
     i. create products button
     ii. implement backend api
     iii. handle on click
+38. Create Edit Product
+    i. create edit button
+    ii. create edit product ui
+    iii. dispaly product info in the input boxes
