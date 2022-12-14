@@ -165,7 +165,7 @@
 38. Create Edit Product
     i. create edit button
     ii. create edit product ui
-    iii. dispaly product info in the input boxes
+    iii. display product info in the input boxes
 39. Implement Update Product
     i. create edit product backend api
     ii. handle update click
@@ -178,3 +178,7 @@
     i. show delete button
     ii. implement backend api
     iii. handle on click
+42. List Orders
+    i. create order list screen
+    ii. implement backend api
+    iii. fetch and display orders
