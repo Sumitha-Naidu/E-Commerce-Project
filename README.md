@@ -200,3 +200,7 @@
     iii. display product info in the input boxes
     iv. implement backend api
     v. handle edit click
+47. Delete User
+    i. add delete button
+    ii. handle click action
+    iii. implement backend api for delete
