@@ -10,6 +10,7 @@ export default function ShippingAddressScreen() {
   const navigate = useNavigate();
   const { state, dispatch: ctxDispatch } = useContext(Store);
   const {
+    fullBox,
     userInfo,
     cart: { shippingAddress },
   } = state;
@@ -36,6 +37,7 @@ export default function ShippingAddressScreen() {
         city,
         postalCode,
         country,
+        location: shippingAddress.location,
       },
     });
     localStorage.setItem(
@@ -46,6 +48,7 @@ export default function ShippingAddressScreen() {
         city,
         postalCode,
         country,
+        location: shippingAddress.location,
       })
     );
     navigate('/payment');
@@ -107,7 +110,6 @@ export default function ShippingAddressScreen() {
               required
             />
           </Form.Group>
-
           <Form.Group
             className="mb-3"
             controlId="country"
@@ -119,16 +121,32 @@ export default function ShippingAddressScreen() {
               required
             />
           </Form.Group>
-          <Form.Group>
-            <div className="mb-3">
-              <Button
-                variant="primary"
-                type="submit"
-              >
-                Continue
-              </Button>
-            </div>
-          </Form.Group>
+          <div className="mb-3">
+            <Button
+              id="chooseOnMap"
+              type="button"
+              variant="light"
+              onClick={() => navigate('/map')}
+            >
+              Choose Location On Map
+            </Button>
+            {shippingAddress.location && shippingAddress.location.lat ? (
+              <div>
+                LAT: {shippingAddress.location.lat} LNG:{' '}
+                {shippingAddress.location.lng}
+              </div>
+            ) : (
+              <div>No location</div>
+            )}
+          </div>
+          <div className="mb-3">
+            <Button
+              variant="primary"
+              type="submit"
+            >
+              Continue
+            </Button>
+          </div>
         </Form>
       </div>
     </div>

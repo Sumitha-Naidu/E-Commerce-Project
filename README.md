@@ -204,3 +204,13 @@
     i. add delete button
     ii. handle click action
     iii. implement backend api for delete
+48. Choose Address On Google Map
+    i. create google map credentials
+    ii. update .env file with Google Api Key
+    iii. create api to send google api to frontend
+    iv. create map screen
+    v. fetch google api
+    vi. getUserLocation
+    vii. install @react-google-maps/api
+    viii. use it in shipping screen
+    ix. apply map to the checkout screen
