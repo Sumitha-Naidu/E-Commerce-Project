@@ -225,3 +225,7 @@
     i. create submit review form
     ii. handle submit
     iii. implement backend api for review
+51. Upload multiple Images
+    i. add images to product model
+    ii. get images in edit screen
+    iii. show images in product screen
