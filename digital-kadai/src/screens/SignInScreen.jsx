@@ -40,9 +40,9 @@ export default function SignInScreen() {
     console.log('Signin user ' + JSON.stringify(userInfo));
     console.log('Signin redirect ' + JSON.stringify(redirectUrl));
     if (userInfo) {
-      navigate('/');
+      navigate(redirect);
     }
-  });
+  }, [navigate, redirect, userInfo]);
   return (
     <Container className="small-container">
       <Helmet>

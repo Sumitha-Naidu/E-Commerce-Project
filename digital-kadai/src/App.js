@@ -60,7 +60,8 @@ function App() {
         toast.error(getError(error));
       }
     };
-  });
+    fetchCategories();
+  }, []);
 
   return (
     <BrowserRouter>
@@ -176,16 +177,21 @@ function App() {
             <Nav.Item>
               <strong>Categories</strong>
             </Nav.Item>
-            {categories.map((category) => {
+            {categories.map((category) => (
               <Nav.Item key={category}>
-                <LinkContainer
+                <Link
                   to={`/search?category=${category}`}
                   onClick={() => setSidebarIsOpen(false)}
                 >
-                  <Nav.Link>{category}</Nav.Link>
-                </LinkContainer>
-              </Nav.Item>;
-            })}
+                  <Nav.Link
+                    as={Link}
+                    to={`/search?category=${category}`}
+                  >
+                    {category}
+                  </Nav.Link>
+                </Link>
+              </Nav.Item>
+            ))}
           </Nav>
         </div>
         <main>
